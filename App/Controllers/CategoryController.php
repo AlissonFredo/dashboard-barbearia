@@ -28,7 +28,20 @@ class CategoryController extends Action {
 		//@$this->view->dados = $result;
 		//$this->render('categoria', 'layout_app');
 
-		header('Location: /categoria?sucess=1');
+		header('Location: /categoria?save=true');
+	}
+
+	public function deletar(){
+		$categoria = Container::getModel('Categoria');
+		$categoria->__set('id', $_GET['del']);
+		$result = $categoria->deletar();
+
+		if($result == 1){
+			header('Location: /categoria?delet=1');
+		}else {
+			header('Location: /categoria?delet=2');
+		}
+		
 	}
 
 }

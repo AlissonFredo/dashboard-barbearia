@@ -32,6 +32,12 @@ class Route extends Bootstrap {
 			'action' => 'save'
 		);
 
+		$routes['saveCategory'] = array(
+			'route' => '/deleteCategory',
+			'controller' => 'categoryController',
+			'action' => 'deletar'
+		);
+
 		$this->setRoutes($routes);
 	}
 

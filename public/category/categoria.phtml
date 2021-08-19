@@ -1,13 +1,9 @@
-<?php
-    if(isset($_GET['sucess']) && $_GET['sucess'] == 1){ 
-?>
-
-<div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-    Categoria cadastrada com sucesso.
-</div>
-
+<?php if(isset($_GET['save']) && $_GET['save'] == true){ ?>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        Categoria cadastrada com sucesso.
+    </div>
 <?php } ?>
 
 <div class="card card-primary">
@@ -20,7 +16,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome">
+                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome" required maxlength="50">
             </div>
         </div>
         <!-- /.card-body -->
@@ -49,6 +45,29 @@
                     </div>
                 </div>
             </div>
+
+            <?php if(isset($_GET['delet']) && $_GET['delet'] == 1){ ?>
+
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+                    Categoria excluida com sucesso.
+                </div>
+            <?php } ?>
+
+            <?php if(isset($_GET['delet']) && $_GET['delet'] == 2) { ?>
+            
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Erro!</h5>
+                    Erro ao excluir categoria.
+                </div>
+
+            <?php } ?>
+
+            
+            
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -56,6 +75,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +85,8 @@
                             <tr>
                                 <td><?= $categoria['id'] ?></td>
                                 <td><?= $categoria['nome'] ?></td>
+                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $categoria['id'] ?>)"></i></td>
+                                <td><i class="fas fa-edit text-info"></i></td>
                             </tr>
                         <?php } ?>
 
@@ -75,3 +98,10 @@
         <!-- /.card -->
     </div>
 </div>
+
+<script>
+
+    function deletar(id){
+        location.href = '/deleteCategory?del=' + id;
+    }
+</script>

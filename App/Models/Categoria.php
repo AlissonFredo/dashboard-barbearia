@@ -30,6 +30,14 @@ class Categoria extends Model {
 		$stmt->bindValue(2, $this->__get('id_status'));
 		return $stmt->execute();
 	}
+
+	public function deletar(){
+		$query = 'DELETE FROM categoria WHERE id = ?';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(1, $this->__get('id'));
+
+		return 1;
+	}
 }
 
 ?>
