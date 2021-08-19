@@ -1,5 +1,5 @@
 <?php
-    if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){ 
+    if(isset($_GET['sucess']) && $_GET['sucess'] == 1){ 
 ?>
 
 <div class="alert alert-success alert-dismissible">
@@ -16,7 +16,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="assets/controller/categoria_controller.php?acao=inserir" method="post">
+    <form action="/saveCategory" method="post">
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
@@ -35,7 +35,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title"></h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
