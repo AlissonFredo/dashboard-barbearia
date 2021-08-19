@@ -22,7 +22,7 @@ class Route extends Bootstrap {
 
 		$routes['categoria'] = array(
 			'route' => '/categoria',
-			'controller' => 'indexController',
+			'controller' => 'categoryController',
 			'action' => 'categoria'
 		);
 

@@ -3,10 +3,6 @@
 
 namespace App\Controllers;
 
-ini_set('display_errors',1);
-ini_set('display_startup_erros',1);
-error_reporting(E_ALL);
-
 //os recursos do miniframework
 use MF\Controller\Action;
 use MF\Model\Container;
@@ -25,10 +21,6 @@ class IndexController extends Action {
 
 	public function home() {
 		$this->render('home', 'layout_app');
-	}
-
-	public function categoria(){
-		$this->render('categoria', 'layout_app');
 	}
 
 }
