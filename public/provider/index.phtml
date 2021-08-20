@@ -74,7 +74,7 @@
                         <tr>
                             <td><?= $provider['id'] ?></td>
                             <td><?= $provider['nome'] ?></td>
-                            <td><i class="fas fa-trash text-danger"></i></td>
+                            <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $provider['id'] ?>)"></i></td>
                             <td><i class="fas fa-edit text-info"></i></td>
                         </tr>
                         <?php } ?>
@@ -88,3 +88,9 @@
         <!-- /.card -->
     </div>
 </div>
+
+<script>
+    function deletar(id){
+        location.href = '/fornecedor/deletar?id='+id;
+    }
+</script>

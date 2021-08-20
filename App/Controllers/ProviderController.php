@@ -34,4 +34,10 @@
             }
 
         }
+
+        public function deletar(){
+            $provider = Container::getModel('Provider');
+            $provider->__set('id', $_GET['id']);
+            $provider->deletar();
+        }
     }

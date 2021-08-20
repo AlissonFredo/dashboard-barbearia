@@ -28,4 +28,12 @@
             $query = 'SELECT id, nome FROM fornecedor';
             return $this->db->query($query)->fetchAll();
         }
+
+        public function deletar(){
+            $query = 'DELETE FROM fornecedor WHERE id = ?';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('id'));
+            $stmt->execute();
+            echo 'finalizou';
+        }
     }

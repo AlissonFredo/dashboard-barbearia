@@ -50,6 +50,12 @@ class Route extends Bootstrap {
 			'action' => 'save'
 		);
 
+		$routes['deleteFornecedor'] = array(
+			'route' => '/fornecedor/deletar',
+			'controller' => 'providerController',
+			'action' => 'deletar'
+		);
+
 		$this->setRoutes($routes);
 	}
 
