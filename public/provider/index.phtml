@@ -1,27 +1,15 @@
-<?php
-    if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){ 
-?>
-
-<div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-    Categoria cadastrada com sucesso.
-</div>
-
-<?php } ?>
-
-
 <div class="card card-primary">
     <div class="card-header">
-        <h4>Cadastro categoria</h4>
+        <h4>Cadastro fornecedor</h4>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="assets/controller/categoria_controller.php?acao=inserir" method="post">
+    <form action="/saveCategory" method="post">
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome">
+                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
+                    required maxlength="50">
             </div>
         </div>
         <!-- /.card-body -->
@@ -36,7 +24,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title"></h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -50,32 +38,32 @@
                     </div>
                 </div>
             </div>
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Reason</th>
+                            <th>Nome</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>1</td>
+                            <td>Casas da Barba</td>
+                            <td><i class="fas fa-trash text-danger"></i></td>
+                            <td><i class="fas fa-edit text-info"></i></td>
                         </tr>
 
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
+
         </div>
         <!-- /.card -->
     </div>
