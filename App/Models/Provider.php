@@ -23,4 +23,9 @@
             $stmt->bindValue(2, $this->__get('id_status'));
             return $stmt->execute();
         }
+
+        public function getProviders(){
+            $query = 'SELECT id, nome FROM fornecedor';
+            return $this->db->query($query)->fetchAll();
+        }
     }

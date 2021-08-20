@@ -70,13 +70,14 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php foreach($this->view->dados as $key=>$provider) { ?>
                         <tr>
-                            <td>1</td>
-                            <td>Casas da Barba</td>
+                            <td><?= $provider['id'] ?></td>
+                            <td><?= $provider['nome'] ?></td>
                             <td><i class="fas fa-trash text-danger"></i></td>
                             <td><i class="fas fa-edit text-info"></i></td>
                         </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>
