@@ -21,6 +21,6 @@
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(1, strtoupper($this->__get('nome')));
             $stmt->bindValue(2, $this->__get('id_status'));
-            $stmt->execute();
+            return $stmt->execute();
         }
     }

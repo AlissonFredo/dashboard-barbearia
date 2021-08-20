@@ -15,8 +15,13 @@
             $provider = Container::getModel('Provider');
             $provider->__set('nome', $_POST['nome']);
             $provider->__set('id_status', 1);
-            $provider->save();
+            $result = $provider->save();
 
-            header('Location: /fornecedor');
+            if($result) {
+                header('Location: /fornecedor?save=1');
+            } else {
+                header('Location: /fornecedor?save=2');
+            }
+
         }
     }
