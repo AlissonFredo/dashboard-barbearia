@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use MF\Model\Model;
 
 class Categoria extends Model {
@@ -32,11 +30,13 @@ class Categoria extends Model {
 	}
 
 	public function deletar(){
+		$result;
 		$query = 'DELETE FROM categoria WHERE id = ?';
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(1, $this->__get('id'));
+		$result = $stmt->execute();
+		return $result;
 
-		return 1;
 	}
 }
 

@@ -1,9 +1,17 @@
-<?php if(isset($_GET['save']) && $_GET['save'] == true){ ?>
-    <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-        Categoria cadastrada com sucesso.
-    </div>
+<?php if(isset($_GET['save']) && $_GET['save'] == 1){ ?>
+<div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+    Categoria cadastrada com sucesso.
+</div>
+<?php } ?>
+
+<?php if(isset($_GET['save']) && $_GET['save'] == 2){ ?>
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-check"></i> Erro!</h5>
+    Erro ao cadastra categoria.
+</div>
 <?php } ?>
 
 <div class="card card-primary">
@@ -16,7 +24,8 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome" required maxlength="50">
+                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
+                    required maxlength="50">
             </div>
         </div>
         <!-- /.card-body -->
@@ -48,25 +57,25 @@
 
             <?php if(isset($_GET['delet']) && $_GET['delet'] == 1){ ?>
 
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-                    Categoria excluida com sucesso.
-                </div>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+                Categoria excluida com sucesso.
+            </div>
             <?php } ?>
 
             <?php if(isset($_GET['delet']) && $_GET['delet'] == 2) { ?>
-            
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-check"></i> Erro!</h5>
-                    Erro ao excluir categoria.
-                </div>
+
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Erro!</h5>
+                Erro ao excluir categoria.
+            </div>
 
             <?php } ?>
 
-            
-            
+
+
 
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
@@ -82,26 +91,56 @@
                     <tbody>
 
                         <?php foreach($this->view->dados as $indice=>$categoria){ ?>
-                            <tr>
-                                <td><?= $categoria['id'] ?></td>
-                                <td><?= $categoria['nome'] ?></td>
-                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $categoria['id'] ?>)"></i></td>
-                                <td><i class="fas fa-edit text-info"></i></td>
-                            </tr>
+                        <tr>
+                            <td><?= $categoria['id'] ?></td>
+                            <td><?= $categoria['nome'] ?></td>
+                            <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $categoria['id'] ?>)"></i></td>
+                            <td><i class="fas fa-edit text-info"
+                                    onclick="editar(<?= $categoria['id'], $categoria['nome'] ?>)"></i></td>
+                        </tr>
                         <?php } ?>
 
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
+
+            <!-- ***************            MODAL IMPLEMENTAR DEPOIS            ****************
+
+            <div class="modal fade show" id="modal-default" style="display: block; padding-right: 15px;"
+                aria-modal="true" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Default Modal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>One fine body…</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                 ***************            MODAL IMPLEMENTAR DEPOIS            **************** -->
+
         </div>
         <!-- /.card -->
     </div>
 </div>
 
 <script>
-
-    function deletar(id){
+    function deletar(id) {
         location.href = '/deleteCategory?del=' + id;
+    }
+
+    function editar(id, nome) {
+        //implementar depois
     }
 </script>

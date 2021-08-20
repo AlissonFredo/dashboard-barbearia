@@ -25,17 +25,18 @@ class CategoryController extends Action {
 		$categoria->__set('nome', $_POST['nome']);
 		$categoria->__set('id_status', 1);
 		$result = $categoria->save();
-		//@$this->view->dados = $result;
-		//$this->render('categoria', 'layout_app');
 
-		header('Location: /categoria?save=true');
+		if($result){
+			header('Location: /categoria?save=1');
+		}else{
+			header('Location: /categoria?save=2');
+		}
 	}
 
 	public function deletar(){
 		$categoria = Container::getModel('Categoria');
 		$categoria->__set('id', $_GET['del']);
 		$result = $categoria->deletar();
-
 		if($result == 1){
 			header('Location: /categoria?delet=1');
 		}else {
