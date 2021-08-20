@@ -44,6 +44,12 @@ class Route extends Bootstrap {
 			'action' => 'index'
 		);
 
+		$routes['saveFornecedor'] = array(
+			'route' => '/fornecedor/save',
+			'controller' => 'providerController',
+			'action' => 'save'
+		);
+
 		$this->setRoutes($routes);
 	}
 
