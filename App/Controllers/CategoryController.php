@@ -1,48 +1,44 @@
 <?php
+	namespace App\Controllers;
 
+	//os recursos do miniframework
+	use MF\Controller\Action;
+	use MF\Model\Container;
 
-namespace App\Controllers;
+	//os models
+	use App\Models\Categoria;
 
-//os recursos do miniframework
-use MF\Controller\Action;
-use MF\Model\Container;
+	class CategoryController extends Action {
 
-//os models
-use App\Models\Categoria;
+		public function categoria(){
+			$categoria = Container::getModel('Categoria');
+			$categorias = $categoria->getCategorias();
+			@$this->view->dados = $categorias;
+			$this->render('categoria', 'layout_app');
+		}
 
-class CategoryController extends Action {
+		public function save(){
+			$categoria = Container::getModel('Categoria');
+			$categoria->__set('nome', $_POST['nome']);
+			$categoria->__set('id_status', 1);
+			$result = $categoria->save();
 
+			if($result) {
+				header('Location: /categoria?save=1');
+			} else {
+				header('Location: /categoria?save=2');
+			}
+		}
 
-	public function categoria(){
-		$categoria = Container::getModel('Categoria');
-		$categorias = $categoria->getCategorias();
-		@$this->view->dados = $categorias;
-		$this->render('categoria', 'layout_app');
-	}
+		public function deletar(){
+			$categoria = Container::getModel('Categoria');
+			$categoria->__set('id', $_GET['del']);
+			$result = $categoria->deletar();
 
-	public function save(){
-		$categoria = Container::getModel('Categoria');
-		$categoria->__set('nome', $_POST['nome']);
-		$categoria->__set('id_status', 1);
-		$result = $categoria->save();
-
-		if($result){
-			header('Location: /categoria?save=1');
-		}else{
-			header('Location: /categoria?save=2');
+			if($result == 1) {
+				header('Location: /categoria?delet=1');
+			} else {
+				header('Location: /categoria?delet=2');
+			}	
 		}
 	}
-
-	public function deletar(){
-		$categoria = Container::getModel('Categoria');
-		$categoria->__set('id', $_GET['del']);
-		$result = $categoria->deletar();
-		if($result == 1){
-			header('Location: /categoria?delet=1');
-		}else {
-			header('Location: /categoria?delet=2');
-		}
-		
-	}
-
-}

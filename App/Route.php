@@ -1,64 +1,65 @@
 <?php
+	namespace App;
+	use MF\Init\Bootstrap;
 
-namespace App;
+	class Route extends Bootstrap {
 
-use MF\Init\Bootstrap;
+		protected function initRoutes() {
 
-class Route extends Bootstrap {
+			$routes['login'] = array(
+				'route' => '/',
+				'controller' => 'indexController',
+				'action' => 'login'
+			);
 
-	protected function initRoutes() {
+			$routes['home'] = array(
+				'route' => '/home',
+				'controller' => 'indexController',
+				'action' => 'home'
+			);
 
-		$routes['login'] = array(
-			'route' => '/',
-			'controller' => 'indexController',
-			'action' => 'login'
-		);
+			$routes['categoria'] = array(
+				'route' => '/categoria',
+				'controller' => 'categoryController',
+				'action' => 'categoria'
+			);
 
-		$routes['home'] = array(
-			'route' => '/home',
-			'controller' => 'indexController',
-			'action' => 'home'
-		);
+			$routes['saveCategory'] = array(
+				'route' => '/saveCategory',
+				'controller' => 'categoryController',
+				'action' => 'save'
+			);
 
-		$routes['categoria'] = array(
-			'route' => '/categoria',
-			'controller' => 'categoryController',
-			'action' => 'categoria'
-		);
+			$routes['deleteCategory'] = array(
+				'route' => '/deleteCategory',
+				'controller' => 'categoryController',
+				'action' => 'deletar'
+			);
 
-		$routes['saveCategory'] = array(
-			'route' => '/saveCategory',
-			'controller' => 'categoryController',
-			'action' => 'save'
-		);
+			$routes['indexFornecedor'] = array(
+				'route' => '/fornecedor',
+				'controller' => 'providerController',
+				'action' => 'index'
+			);
 
-		$routes['deleteCategory'] = array(
-			'route' => '/deleteCategory',
-			'controller' => 'categoryController',
-			'action' => 'deletar'
-		);
+			$routes['saveFornecedor'] = array(
+				'route' => '/fornecedor/save',
+				'controller' => 'providerController',
+				'action' => 'save'
+			);
 
-		$routes['indexFornecedor'] = array(
-			'route' => '/fornecedor',
-			'controller' => 'providerController',
-			'action' => 'index'
-		);
+			$routes['deleteFornecedor'] = array(
+				'route' => '/fornecedor/deletar',
+				'controller' => 'providerController',
+				'action' => 'deletar'
+			);
 
-		$routes['saveFornecedor'] = array(
-			'route' => '/fornecedor/save',
-			'controller' => 'providerController',
-			'action' => 'save'
-		);
+			$routes['indexServico'] = array(
+				'route' => '/servico',
+				'controller' => 'serviceController',
+				'action' => 'index'
+			);
 
-		$routes['deleteFornecedor'] = array(
-			'route' => '/fornecedor/deletar',
-			'controller' => 'providerController',
-			'action' => 'deletar'
-		);
-
-		$this->setRoutes($routes);
+			$this->setRoutes($routes);
+		}
 	}
-
-}
-
-?>
