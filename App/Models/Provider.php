@@ -33,7 +33,6 @@
             $query = 'DELETE FROM fornecedor WHERE id = ?';
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(1, $this->__get('id'));
-            $stmt->execute();
-            echo 'finalizou';
+            return $stmt->execute();
         }
     }

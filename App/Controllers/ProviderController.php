@@ -38,6 +38,12 @@
         public function deletar(){
             $provider = Container::getModel('Provider');
             $provider->__set('id', $_GET['id']);
-            $provider->deletar();
+            $result = $provider->deletar();
+
+            if($result){
+                header('Location: /fornecedor?deletar=1');
+            }else {
+                header('Location: /fornecedor?deletar=2');
+            }
         }
     }

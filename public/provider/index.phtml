@@ -14,9 +14,6 @@
 </div>
 <?php } ?>
 
-
-
-
 <div class="card card-primary">
     <div class="card-header">
         <h4>Cadastro fornecedor</h4>
@@ -58,6 +55,25 @@
                 </div>
             </div>
 
+            <?php if(isset($_GET['deletar']) && $_GET['deletar'] == 1){ ?>
+
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+                Fornecedor excluido com sucesso.
+            </div>
+            <?php } ?>
+
+            <?php if(isset($_GET['deletar']) && $_GET['deletar'] == 2) { ?>
+
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Erro!</h5>
+                Erro ao excluir fornecedor.
+            </div>
+
+            <?php } ?>
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -90,7 +106,7 @@
 </div>
 
 <script>
-    function deletar(id){
-        location.href = '/fornecedor/deletar?id='+id;
+    function deletar(id) {
+        location.href = '/fornecedor/deletar?id=' + id;
     }
 </script>
