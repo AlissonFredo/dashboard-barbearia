@@ -27,4 +27,9 @@
             $stmt->bindValue(4, $this->__get('id_status'));
             return $stmt->execute();
         }
+
+        public function getServices(){
+            $query = 'SELECT id, nome, valor, comissao, id_status FROM servico';
+            return $this->db->query($query)->fetchAll();
+        }
     }

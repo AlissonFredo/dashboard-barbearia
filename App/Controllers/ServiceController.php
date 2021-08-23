@@ -7,6 +7,9 @@
     class ServiceController extends Action {
 
         public function index(){
+            $service = Container::getModel('Service');
+            $services = $service->getServices();
+            @$this->view->dados = $services;
             $this->render('index', 'layout_app');
         }
 

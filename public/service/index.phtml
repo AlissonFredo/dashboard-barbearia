@@ -78,19 +78,23 @@
                             <th>Nome</th>
                             <th>Valor</th>
                             <th>Comissão</th>
+                            <th>Status</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>corte cabelo</td>
-                            <td>15,50 R$</td>
-                            <td>03,30</td>
-                            <td><i class="fas fa-trash text-danger"></i></td>
-                            <td><i class="fas fa-edit text-info"></i></td>
-                        </tr>
+                        <?php foreach($this->view->dados as $key=>$service) { ?>
+                            <tr>
+                                <td><?= $service['id'] ?></td>
+                                <td><?= $service['nome'] ?></td>
+                                <td><?= $service['valor'] ?></td>
+                                <td><?= $service['comissao'] ?></td>
+                                <td><?= $service['id_status'] ?></td>
+                                <td><i class="fas fa-trash text-danger"></i></td>
+                                <td><i class="fas fa-edit text-info"></i></td>
+                            </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>

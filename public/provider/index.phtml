@@ -87,12 +87,12 @@
                     </thead>
                     <tbody>
                         <?php foreach($this->view->dados as $key=>$provider) { ?>
-                        <tr>
-                            <td><?= $provider['id'] ?></td>
-                            <td><?= $provider['nome'] ?></td>
-                            <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $provider['id'] ?>)"></i></td>
-                            <td><i class="fas fa-edit text-info"></i></td>
-                        </tr>
+                            <tr>
+                                <td><?= $provider['id'] ?></td>
+                                <td><?= $provider['nome'] ?></td>
+                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $provider['id'] ?>)"></i></td>
+                                <td><i class="fas fa-edit text-info"></i></td>
+                            </tr>
                         <?php } ?>
 
                     </tbody>
