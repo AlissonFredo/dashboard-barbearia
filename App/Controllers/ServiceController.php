@@ -27,4 +27,11 @@
                 header('Location: /servico?save=2');
             }
         }
+
+        public function deletar(){
+            $service = Container::getModel('Service');
+            $service->__set('id', $_GET['id']);
+            $result = $service->deletar();
+            header('Location: /servico');
+        }
     }

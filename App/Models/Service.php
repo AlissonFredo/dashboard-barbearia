@@ -32,4 +32,11 @@
             $query = 'SELECT id, nome, valor, comissao, id_status FROM servico';
             return $this->db->query($query)->fetchAll();
         }
+
+        public function deletar(){
+            $query = 'DELETE FROM servico WHERE id = ?';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('id'));
+            return $stmt->execute();
+        }
     }

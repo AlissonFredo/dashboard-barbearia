@@ -91,7 +91,7 @@
                                 <td><?= $service['valor'] ?></td>
                                 <td><?= $service['comissao'] ?></td>
                                 <td><?= $service['id_status'] ?></td>
-                                <td><i class="fas fa-trash text-danger"></i></td>
+                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $service['id'] ?>)"></i></td>
                                 <td><i class="fas fa-edit text-info"></i></td>
                             </tr>
                         <?php } ?>
@@ -105,3 +105,9 @@
         <!-- /.card -->
     </div>
 </div>
+
+<script>
+    function deletar(id) {
+        location.href = '/servico/deletar?id=' + id;
+    }
+</script>

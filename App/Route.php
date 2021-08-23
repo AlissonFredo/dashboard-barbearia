@@ -66,6 +66,12 @@
 				'action' => 'save'
 			);
 
+			$routes['deletarServico'] = array(
+				'route' => '/servico/deletar',
+				'controller' => 'serviceController',
+				'action' => 'deletar'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}
