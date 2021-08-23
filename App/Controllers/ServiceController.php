@@ -32,6 +32,13 @@
             $service = Container::getModel('Service');
             $service->__set('id', $_GET['id']);
             $result = $service->deletar();
-            header('Location: /servico');
+
+            if($result) {
+                header('Location: /servico?deletar=1');
+            } else {
+                header('Location: /servico?deletar=2');
+            }
+
+
         }
     }

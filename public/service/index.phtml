@@ -37,8 +37,8 @@
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Comissão</label>
-                <input type="number" name="comissao" class="form-control" id="exampleInputComissao" placeholder="Enter comissão"
-                    required min="0" max="1000">
+                <input type="number" name="comissao" class="form-control" id="exampleInputComissao"
+                    placeholder="Enter comissão" required min="0" max="1000">
             </div>
 
         </div>
@@ -69,6 +69,22 @@
                 </div>
             </div>
 
+            <?php if(isset($_GET['deletar']) && $_GET['deletar'] == 1){ ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+                    Serviço excluido com sucesso.
+                </div>
+            <?php } ?>
+
+            <?php if(isset($_GET['deletar']) && $_GET['deletar'] == 2) { ?>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Erro!</h5>
+                    Erro ao excluir serviço.
+                </div>
+            <?php } ?>
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -85,15 +101,15 @@
                     </thead>
                     <tbody>
                         <?php foreach($this->view->dados as $key=>$service) { ?>
-                            <tr>
-                                <td><?= $service['id'] ?></td>
-                                <td><?= $service['nome'] ?></td>
-                                <td><?= $service['valor'] ?></td>
-                                <td><?= $service['comissao'] ?></td>
-                                <td><?= $service['id_status'] ?></td>
-                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $service['id'] ?>)"></i></td>
-                                <td><i class="fas fa-edit text-info"></i></td>
-                            </tr>
+                        <tr>
+                            <td><?= $service['id'] ?></td>
+                            <td><?= $service['nome'] ?></td>
+                            <td><?= $service['valor'] ?></td>
+                            <td><?= $service['comissao'] ?></td>
+                            <td><?= $service['id_status'] ?></td>
+                            <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $service['id'] ?>)"></i></td>
+                            <td><i class="fas fa-edit text-info"></i></td>
+                        </tr>
                         <?php } ?>
 
                     </tbody>
