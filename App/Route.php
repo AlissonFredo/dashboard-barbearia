@@ -72,6 +72,12 @@
 				'action' => 'deletar'
 			);
 
+			$routes['indexProduto'] = array(
+				'route' => '/produto',
+				'controller' => 'productController',
+				'action' => 'index'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}

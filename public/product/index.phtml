@@ -1,0 +1,133 @@
+<div class="card card-primary">
+    <div class="card-header">
+        <h4>Cadastro Produto</h4>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form action="/servico/save" method="post">
+        <div class="card-body">
+
+            <div class="form-group">
+                <label for="exampleInputNome">Nome</label>
+                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
+                    required maxlength="50">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputValorCompra">Valor de compra</label>
+                <input type="number" name="valor_compra" class="form-control" id="exampleInputValorCompra" placeholder="Enter valor de compra"
+                    required min="1" max="1000">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputValorVenda">Valor de venda</label>
+                <input type="number" name="valor_venda" class="form-control" id="exampleInputValorVenda" placeholder="Enter valor de venda"
+                    required min="1" max="1000">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Comissão</label>
+                <input type="number" name="comissao" class="form-control" id="exampleInputComissao"
+                    placeholder="Enter comissão" required min="0" max="1000">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Quantidade</label>
+                <input type="number" name="quantidade" class="form-control" id="exampleInputQuantidade"
+                    placeholder="Enter quantidade" required min="0" max="1000">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Fornecedor</label>
+                    <select class="form-control" name="fornecedor" id="exampleSelectFornecedor">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Categoria</label>
+                <select class="form-control" name="categoria" id="exampleSelectCategoria">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Data de validade</label>
+                <input type="date" name="data_validade" class="form-control" id="exampleInputData">
+            </div>
+
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"></h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Valor de compra</th>
+                            <th>Valor de venda</th>
+                            <th>Comissão</th>
+                            <th>Quantidade</th>
+                            <th>Fornecedor</th>
+                            <th>Categoria</th>
+                            <th>Data de validade</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>cerveja skol</td>
+                            <td>4</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>10</td>
+                            <td>Casa da bebida</td>
+                            <td>bebida</td>
+                            <td>23/08/2022</td>
+                            <td>1</td>
+                            <td><i class="fas fa-trash text-danger"></i></td>
+                            <td><i class="fas fa-edit text-info"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
