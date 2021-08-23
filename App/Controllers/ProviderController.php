@@ -10,13 +10,6 @@
         public function index(){
             $provider = Container::getModel('Provider');
             $providers = $provider->getProviders();
-
-            /*
-            echo '<pre>';
-            print_r($providers);
-            echo '</pre>';
-            */
-
             @$this->view->dados = $providers;
             $this->render('index', 'layout_app');
         }

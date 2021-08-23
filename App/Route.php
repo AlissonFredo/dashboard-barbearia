@@ -60,6 +60,12 @@
 				'action' => 'index'
 			);
 
+			$routes['saveServico'] = array(
+				'route' => '/servico/save',
+				'controller' => 'serviceController',
+				'action' => 'save'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}
