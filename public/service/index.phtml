@@ -1,3 +1,19 @@
+<?php if(isset($_GET['save']) && $_GET['save'] == 1){ ?>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        Serviço cadastrado com sucesso.
+    </div>
+<?php } ?>
+
+<?php if(isset($_GET['save']) && $_GET['save'] == 2){ ?>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Erro!</h5>
+        Erro ao cadastra serviço.
+    </div>
+<?php } ?>
+
 <div class="card card-primary">
     <div class="card-header">
         <h4>Cadastro serviço</h4>
@@ -16,7 +32,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Valor</label>
                 <input type="number" name="valor" class="form-control" id="exampleInputValor" placeholder="Enter valor"
-                    required min="1" max="1000" maxlength="10">
+                    required min="1" max="1000">
             </div>
 
             <div class="form-group">
