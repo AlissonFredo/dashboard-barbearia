@@ -12,6 +12,10 @@
             $this->render('register', 'layout_app');
         }
 
+        public function listar(){
+            $this->render('list', 'layout_app');
+        }
+
         public function save(){
             $collaborator = Container::getModel('Collaborator');
             $collaborator->__set('nomeCompleto', $_POST['nome']);

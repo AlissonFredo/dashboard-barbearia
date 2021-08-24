@@ -104,6 +104,12 @@
 				'action' => 'cadastrar'
 			);
 
+			$routes['listarColaborador'] = array(
+				'route' => '/colaborador/listar',
+				'controller' => 'collaboratorController',
+				'action' => 'listar'
+			);
+
 			$routes['saveColaborador'] = array(
 				'route' => '/colaborador/cadastrar/save',
 				'controller' => 'collaboratorController',
