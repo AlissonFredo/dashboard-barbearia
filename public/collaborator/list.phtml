@@ -39,7 +39,7 @@
                                 <td><?= $collaborator['telefone'] ?></td>
                                 <td><?= $collaborator['cpf'] ?></td>
                                 <td><?= $collaborator['email'] ?></td>
-                                <td><i class="fas fa-trash text-danger"></i></td>
+                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $collaborator['id'] ?>)"></i></td>
                                 <td><i class="fas fa-edit text-info"></i></td>
                             </tr>
                         <?php } ?>
@@ -52,3 +52,9 @@
         <!-- /.card -->
     </div>
 </div>
+
+<script>
+    function deletar(id){
+        location.href = '/colaborador/listar/deletar?id=' + id;
+    }
+</script>

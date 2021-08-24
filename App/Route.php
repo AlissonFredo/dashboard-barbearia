@@ -116,6 +116,12 @@
 				'action' => 'save'
 			);
 
+			$routes['saveColaborador'] = array(
+				'route' => '/colaborador/listar/deletar',
+				'controller' => 'collaboratorController',
+				'action' => 'deletar'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}

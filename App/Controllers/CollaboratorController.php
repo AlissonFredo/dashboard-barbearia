@@ -34,4 +34,16 @@
                 header('Location: /colaborador/cadastrar?save=2');
             }
         }
+
+        public function deletar(){
+            $collaborator = Container::getModel('Collaborator');
+            $collaborator->__set('id', $_GET['id']);
+            $result = $collaborator->deletar();
+
+            if($result){
+                header('Location: /colaborador/listar?deletar=1');
+            } else {
+                header('Location: /colaborador/listar?deletar=2');
+            }
+        }
     }
