@@ -36,7 +36,6 @@
             $stmt->bindValue(7, $this->__get('idFornecedor'));
             $stmt->bindValue(8, $this->__get('idCategoria'));
             $stmt->bindValue(9, $this->__get('idStatus'));
-
-            $stmt->execute();
+            return $stmt->execute();
         }
     }

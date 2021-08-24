@@ -40,6 +40,12 @@
             $data = implode("-",array_reverse(explode("/",$_POST['data_validade'])));
             $product->__set('dataValidade', $data);
             $product->__set('idStatus', 1);
-            $product->save();
+            $result = $product->save();
+
+            if($result){
+                header('Location: /produto?save=1');
+            } else {
+                header('Location: /produto?save=2');
+            }
         }
     }
