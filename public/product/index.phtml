@@ -149,7 +149,7 @@
                                         <td><?= $produto['id_categoria'] ?></td>
                                         <td><?= $produto['data_validade'] ?></td>
                                         <td><?= $produto['id_status'] ?></td>
-                                        <td><i class="fas fa-trash text-danger"></i></td>
+                                        <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $produto['id'] ?>)"></i></td>
                                         <td><i class="fas fa-edit text-info"></i></td>
                                     </tr>
                                 <?php } ?>
@@ -165,3 +165,9 @@
         <!-- /.card -->
     </div>
 </div>
+
+<script>
+    function deletar(id){
+        location.href = '/produto/deletar?id=' + id;
+    }
+</script>

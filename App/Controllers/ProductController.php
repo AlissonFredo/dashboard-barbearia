@@ -52,4 +52,16 @@
                 header('Location: /produto?save=2');
             }
         }
+
+        public function deletar(){
+            $product = Container::getModel('Product');
+            $product->__set('id', $_GET['id']);
+            $result = $product->deletar();
+
+            if($result){
+                header('Location: /produto?deletar=1');
+            } else {
+                header('Location: /produto?deletar=2');
+            }
+        }
     }

@@ -92,6 +92,12 @@
 				'action' => 'save'
 			);
 
+			$routes['deletarProduto'] = array(
+				'route' => '/produto/deletar',
+				'controller' => 'productController',
+				'action' => 'deletar'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}

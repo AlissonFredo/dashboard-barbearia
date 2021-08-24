@@ -43,4 +43,11 @@
             $query = 'SELECT * FROM produto';
             return $this->db->query($query)->fetchAll();
         }
+
+        public function deletar(){
+            $query = 'DELETE FROM produto WHERE id = ?';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('id'));
+            return $stmt->execute();
+        }
     }
