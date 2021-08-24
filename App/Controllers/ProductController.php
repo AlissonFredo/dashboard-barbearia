@@ -18,9 +18,13 @@
             $provider = Container::getModel('Provider');
             $providers = $provider->getProviders();
 
+            $product = Container::getModel('Product');
+            $products = $product->getProducts();
+
             $dados = [
                 'categorias' => $categorias,
-                'fornecedores' => $providers
+                'fornecedores' => $providers,
+                'produtos' => $products
             ];
 
 			@$this->view->dados = $dados;

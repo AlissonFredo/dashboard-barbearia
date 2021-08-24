@@ -38,4 +38,9 @@
             $stmt->bindValue(9, $this->__get('idStatus'));
             return $stmt->execute();
         }
+
+        public function getProducts(){
+            $query = 'SELECT * FROM produto';
+            return $this->db->query($query)->fetchAll();
+        }
     }

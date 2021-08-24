@@ -1,19 +1,17 @@
 <?php if(isset($_GET['save']) && $_GET['save'] == 1){ ?>
-<div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-    Produto cadastrado com sucesso.
-</div>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        Produto cadastrado com sucesso.
+    </div>
 <?php } ?>
 
 <?php if(isset($_GET['save']) && $_GET['save'] == 2){ ?>
-
-<div class="alert alert-danger alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Erro!</h5>
-    Erro ao cadastra produto.
-</div>
-
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Erro!</h5>
+        Erro ao cadastra produto.
+    </div>
 <?php } ?>
 
 <div class="card card-primary">
@@ -60,11 +58,11 @@
 
                 <select class="form-control" name="fornecedor" id="exampleSelectFornecedor">
                     <?php foreach($this->view->dados as $i => $dado){ ?>
-                            <?php if($i == 'fornecedores'){ ?>
-                                <?php foreach($dado as $j => $fornecedor){ ?>
-                                    <option value="<?= $fornecedor['id'] ?>"><?= $fornecedor['nome'] ?></option>
-                                <?php } ?>
+                        <?php if($i == 'fornecedores'){ ?>
+                            <?php foreach($dado as $j => $fornecedor){ ?>
+                                <option value="<?= $fornecedor['id'] ?>"><?= $fornecedor['nome'] ?></option>
                             <?php } ?>
+                        <?php } ?>
                     <?php } ?>
                 </select>
 
@@ -74,11 +72,11 @@
                 <label for="exampleInputEmail1">Categoria</label>
                 <select class="form-control" name="categoria" id="exampleSelectCategoria">
                     <?php foreach($this->view->dados as $i => $dado){ ?>
-                            <?php if($i == 'categorias'){ ?>
-                                <?php foreach($dado as $j => $categoria){ ?>
-                                    <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
-                                <?php } ?>
+                        <?php if($i == 'categorias'){ ?>
+                            <?php foreach($dado as $j => $categoria){ ?>
+                                <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
                             <?php } ?>
+                        <?php } ?>
                     <?php } ?>
                 </select>
             </div>
@@ -136,20 +134,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>cerveja skol</td>
-                            <td>4</td>
-                            <td>6</td>
-                            <td>1</td>
-                            <td>10</td>
-                            <td>Casa da bebida</td>
-                            <td>bebida</td>
-                            <td>23/08/2022</td>
-                            <td>1</td>
-                            <td><i class="fas fa-trash text-danger"></i></td>
-                            <td><i class="fas fa-edit text-info"></i></td>
-                        </tr>
+
+                        <?php foreach($this->view->dados as $i => $dado){ ?>
+                            <?php if($i == 'produtos'){ ?>
+                                <?php foreach($dado as $j => $produto){ ?>
+                                    <tr>
+                                        <td><?= $produto['id'] ?></td>
+                                        <td><?= $produto['nome'] ?></td>
+                                        <td><?= $produto['valor_compra'] ?></td>
+                                        <td><?= $produto['valor_venda'] ?></td>
+                                        <td><?= $produto['comissao'] ?></td>
+                                        <td><?= $produto['qtd'] ?></td>
+                                        <td><?= $produto['id_fornecedor'] ?></td>
+                                        <td><?= $produto['id_categoria'] ?></td>
+                                        <td><?= $produto['data_validade'] ?></td>
+                                        <td><?= $produto['id_status'] ?></td>
+                                        <td><i class="fas fa-trash text-danger"></i></td>
+                                        <td><i class="fas fa-edit text-info"></i></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+
                     </tbody>
                 </table>
             </div>
