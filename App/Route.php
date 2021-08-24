@@ -24,13 +24,13 @@
 				'action' => 'categoria'
 			);
 
-			/*
+			/* URL TESTE 
 			$routes['ListagemCategoria'] = array(
 				'route' => '/categoria/listagem',
 				'controller' => 'categoryController',
 				'action' => 'listagem'
 			);
-			*/
+			 URL TESTE */
 
 			$routes['saveCategory'] = array(
 				'route' => '/saveCategory',
@@ -96,6 +96,12 @@
 				'route' => '/produto/deletar',
 				'controller' => 'productController',
 				'action' => 'deletar'
+			);
+
+			$routes['cadastrarColaborador'] = array(
+				'route' => '/colaborador/cadastrar',
+				'controller' => 'collaboratorController',
+				'action' => 'cadastrar'
 			);
 
 			$this->setRoutes($routes);
