@@ -13,6 +13,9 @@
         }
 
         public function listar(){
+            $collaborator = Container::getModel('Collaborator');
+            $collaborators = $collaborator->getCollaborators();
+            @$this->view->dados = $collaborators;
             $this->render('list', 'layout_app');
         }
 

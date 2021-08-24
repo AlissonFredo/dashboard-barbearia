@@ -31,4 +31,9 @@
             $stmt->bindValue(5, $this->__get('senha'));
             return $stmt->execute();
         }
+
+        public function getCollaborators(){
+            $query = 'SELECT id, nome_completo, telefone, cpf, email FROM colaborador';
+            return $this->db->query($query)->fetchAll();
+        }
     }

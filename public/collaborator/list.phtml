@@ -32,15 +32,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>teste</td>
-                            <td>48 984848484</td>
-                            <td>30330303063</td>
-                            <td>admin@admin.com</td>
-                            <td><i class="fas fa-trash text-danger"></i></td>
-                            <td><i class="fas fa-edit text-info"></i></td>
-                        </tr>
+                        <?php foreach($this->view->dados as $key => $collaborator){ ?>
+                            <tr>
+                                <td><?= $collaborator['id'] ?></td>
+                                <td><?= $collaborator['nome_completo'] ?></td>
+                                <td><?= $collaborator['telefone'] ?></td>
+                                <td><?= $collaborator['cpf'] ?></td>
+                                <td><?= $collaborator['email'] ?></td>
+                                <td><i class="fas fa-trash text-danger"></i></td>
+                                <td><i class="fas fa-edit text-info"></i></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
