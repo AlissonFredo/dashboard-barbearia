@@ -104,6 +104,12 @@
 				'action' => 'cadastrar'
 			);
 
+			$routes['saveColaborador'] = array(
+				'route' => '/colaborador/cadastrar/save',
+				'controller' => 'collaboratorController',
+				'action' => 'save'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}
