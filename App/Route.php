@@ -24,6 +24,14 @@
 				'action' => 'categoria'
 			);
 
+			/*
+			$routes['ListagemCategoria'] = array(
+				'route' => '/categoria/listagem',
+				'controller' => 'categoryController',
+				'action' => 'listagem'
+			);
+			*/
+
 			$routes['saveCategory'] = array(
 				'route' => '/saveCategory',
 				'controller' => 'categoryController',
@@ -76,6 +84,12 @@
 				'route' => '/produto',
 				'controller' => 'productController',
 				'action' => 'index'
+			);
+
+			$routes['saveProduto'] = array(
+				'route' => '/produto/save',
+				'controller' => 'productController',
+				'action' => 'save'
 			);
 
 			$this->setRoutes($routes);

@@ -17,6 +17,15 @@
 			$this->render('categoria', 'layout_app');
 		}
 
+		/*
+		public function listagem(){
+			$categoria = Container::getModel('Categoria');
+			$categorias = $categoria->getCategorias();
+			@$this->view->dados = $categorias;
+			$this->render('categoria', 'layout_app');
+		}
+		*/
+
 		public function save(){
 			$categoria = Container::getModel('Categoria');
 			$categoria->__set('nome', $_POST['nome']);

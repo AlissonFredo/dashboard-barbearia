@@ -4,7 +4,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/servico/save" method="post">
+    <form action="/produto/save" method="post">
         <div class="card-body">
 
             <div class="form-group">
@@ -39,19 +39,29 @@
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Fornecedor</label>
-                    <select class="form-control" name="fornecedor" id="exampleSelectFornecedor">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
+
+                <select class="form-control" name="fornecedor" id="exampleSelectFornecedor">
+                    <?php foreach($this->view->dados as $i => $dado){ ?>
+                            <?php if($i == 'fornecedores'){ ?>
+                                <?php foreach($dado as $j => $fornecedor){ ?>
+                                    <option value="<?= $fornecedor['id'] ?>"><?= $fornecedor['nome'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                    <?php } ?>
                 </select>
+
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Categoria</label>
                 <select class="form-control" name="categoria" id="exampleSelectCategoria">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
+                    <?php foreach($this->view->dados as $i => $dado){ ?>
+                            <?php if($i == 'categorias'){ ?>
+                                <?php foreach($dado as $j => $categoria){ ?>
+                                    <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                    <?php } ?>
                 </select>
             </div>
 
