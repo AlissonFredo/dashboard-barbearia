@@ -19,6 +19,12 @@
             $collaborator->__set('cpf', $_POST['cpf']);
             $collaborator->__set('email', $_POST['email']);
             $collaborator->__set('senha',  md5($_POST['senha']));
-            $collaborator->save();
+            $result = $collaborator->save();
+
+            if($result){
+                header('Location: /colaborador/cadastrar?save=1');
+            } else {
+                header('Location: /colaborador/cadastrar?save=2');
+            }
         }
     }

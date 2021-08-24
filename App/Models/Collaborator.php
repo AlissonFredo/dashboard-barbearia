@@ -29,6 +29,6 @@
             $stmt->bindValue(3, $this->__get('cpf'));
             $stmt->bindValue(4, $this->__get('email'));
             $stmt->bindValue(5, $this->__get('senha'));
-            $stmt->execute();
+            return $stmt->execute();
         }
     }
