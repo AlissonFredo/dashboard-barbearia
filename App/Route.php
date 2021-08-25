@@ -144,6 +144,12 @@
 				'action' => 'deletar'
 			);
 
+			$routes['sair'] = array(
+				'route' => '/sair',
+				'controller' => 'authenticateController',
+				'action' => 'sair'
+			);
+
 			$this->setRoutes($routes);
 		}
 	}

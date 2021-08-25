@@ -46,6 +46,19 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        class="nav-link dropdown-toggle">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                    </a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                        style="left: 0px; right: inherit;">
+                        <li><a href="/sair" class="dropdown-item">Sair </a></li>
+                    </ul>
+                </li>
+            </ul>
+
         </nav>
         <!-- /.navbar -->
 
@@ -104,7 +117,7 @@
             <section class="content">
                 <div class="container-fluid">
 
-		            <?= $this->content() ?>
+                    <?= $this->content() ?>
 
                 </div><!-- /.container-fluid -->
             </section>
@@ -134,7 +147,7 @@
     <script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
