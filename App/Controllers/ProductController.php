@@ -9,7 +9,8 @@
 
     class ProductController extends Action {
 
-        private $indices = array('categorias', 'fornecedores');
+        const SUCESSO = 1;
+        const ERRO = 2;
 
         public function register(){
 
@@ -57,13 +58,13 @@
 
             $data = implode("-",array_reverse(explode("/",$_POST['data_validade'])));
             $product->__set('dataValidade', $data);
-            $product->__set('idStatus', 1);
+            $product->__set('idStatus', Product::STATUS_ATIVO);
             $result = $product->save();
 
             if($result){
-                header('Location: /produto/cadastrar?save=1');
+                header('Location: /produto/cadastrar?save='.self::SUCESSO.'');
             } else {
-                header('Location: /produto/cadastrar?save=2');
+                header('Location: /produto/cadastrar?save='.self::ERRO.'');
             }
         }
 
@@ -73,9 +74,9 @@
             $result = $product->deletar();
 
             if($result){
-                header('Location: /produto/listar?deletar=1');
+                header('Location: /produto/listar?deletar='.self::SUCESSO.'');
             } else {
-                header('Location: /produto/listar?deletar=2');
+                header('Location: /produto/listar?deletar='.self::ERRO.'');
             }
         }
     }

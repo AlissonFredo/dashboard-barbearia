@@ -8,6 +8,9 @@
 
     class CollaboratorController extends Action {
 
+        const SUCESSO = 1;
+        const ERRO = 2;
+
         public function cadastrar(){
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
@@ -40,9 +43,9 @@
             $result = $collaborator->save();
 
             if($result){
-                header('Location: /colaborador/cadastrar?save=1');
+                header('Location: /colaborador/cadastrar?save='.self::SUCESSO.'');
             } else {
-                header('Location: /colaborador/cadastrar?save=2');
+                header('Location: /colaborador/cadastrar?save='.self::ERRO.'');
             }
         }
 
@@ -52,9 +55,9 @@
             $result = $collaborator->deletar();
 
             if($result){
-                header('Location: /colaborador/listar?deletar=1');
+                header('Location: /colaborador/listar?deletar='.self::SUCESSO.'');
             } else {
-                header('Location: /colaborador/listar?deletar=2');
+                header('Location: /colaborador/listar?deletar='.self::ERRO.'');
             }
         }
     }

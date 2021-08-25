@@ -6,6 +6,9 @@
 
     class ServiceController extends Action {
 
+        const SUCESSO = 1;
+        const ERRO = 2;
+
         public function register(){
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
@@ -32,13 +35,13 @@
             $service->__set('nome', $_POST['nome']);
             $service->__set('valor', $_POST['valor']);
             $service->__set('comissao', $_POST['comissao']);
-            $service->__set('id_status', 1);
+            $service->__set('id_status', Service::STATUS_ATIVO);
             $result = $service->save();
 
             if($result) {
-                header('Location: /servico/cadastrar?save=1');
+                header('Location: /servico/cadastrar?save='.self::SUCESSO.'');
             } else {
-                header('Location: /servico/cadastrar?save=2');
+                header('Location: /servico/cadastrar?save='.self::ERRO.'');
             }
         }
 
@@ -48,9 +51,9 @@
             $result = $service->deletar();
 
             if($result) {
-                header('Location: /servico/listar?deletar=1');
+                header('Location: /servico/listar?deletar='.self::SUCESSO.'');
             } else {
-                header('Location: /servico/listar?deletar=2');
+                header('Location: /servico/listar?deletar='.self::ERRO.'');
             }
 
 

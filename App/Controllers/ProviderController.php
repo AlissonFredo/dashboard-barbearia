@@ -7,6 +7,9 @@
     
     class ProviderController extends Action {
 
+        const SUCESSO = 1;
+        const ERRO = 2;
+
         public function list(){
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
@@ -31,13 +34,13 @@
         public function save(){
             $provider = Container::getModel('Provider');
             $provider->__set('nome', $_POST['nome']);
-            $provider->__set('id_status', 1);
+            $provider->__set('id_status', Provider::STATUS_ATIVO);
             $result = $provider->save();
 
             if($result) {
-                header('Location: /fornecedor/cadastrar?save=1');
+                header('Location: /fornecedor/cadastrar?save='.self::SUCESSO.'');
             } else {
-                header('Location: /fornecedor/cadastrar?save=2');
+                header('Location: /fornecedor/cadastrar?save='.self::ERRO.'');
             }
 
         }
@@ -48,9 +51,9 @@
             $result = $provider->deletar();
 
             if($result){
-                header('Location: /fornecedor/listar?deletar=1');
+                header('Location: /fornecedor/listar?deletar='.self::SUCESSO.'');
             }else {
-                header('Location: /fornecedor/listar?deletar=2');
+                header('Location: /fornecedor/listar?deletar='.self::ERRO.'');
             }
         }
     }

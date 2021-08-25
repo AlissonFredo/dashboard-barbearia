@@ -3,6 +3,8 @@
     use MF\Model\Model;
 
     class Product extends Model {
+	    const STATUS_ATIVO = 1;
+
         private $id;
         private $nome;
         private $quantidade;

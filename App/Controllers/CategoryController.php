@@ -10,6 +10,9 @@
 
 	class CategoryController extends Action {
 
+		const SUCESSO = 1;
+        const ERRO = 2;
+
 		public function list(){
 
 			if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
@@ -34,13 +37,13 @@
 		public function save(){
 			$categoria = Container::getModel('Categoria');
 			$categoria->__set('nome', $_POST['nome']);
-			$categoria->__set('id_status', 1);
+			$categoria->__set('id_status', Categoria::STATUS_ATIVO);
 			$result = $categoria->save();
 
 			if($result) {
-				header('Location: //categoria/cadastrar?save=1');
+				header('Location: /categoria/cadastrar?save='.self::SUCESSO.'');
 			} else {
-				header('Location: /categoria/cadastrar?save=2');
+				header('Location: /categoria/cadastrar?save='.self::ERRO.'');
 			}
 		}
 
@@ -50,9 +53,9 @@
 			$result = $categoria->deletar();
 
 			if($result == 1) {
-				header('Location: /categoria/listar?delet=1');
+				header('Location: /categoria/listar?delet='.self::SUCESSO.'');
 			} else {
-				header('Location: /categoria/listar?delet=2');
+				header('Location: /categoria/listar?delet='.self::ERRO.'');
 			}	
 		}
 	}

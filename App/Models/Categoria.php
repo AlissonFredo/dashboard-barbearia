@@ -3,6 +3,7 @@ namespace App\Models;
 use MF\Model\Model;
 
 class Categoria extends Model {
+	const STATUS_ATIVO = 1;
 
 	private $id;
 	private $nome;

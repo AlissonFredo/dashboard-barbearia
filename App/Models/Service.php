@@ -3,6 +3,7 @@
     use MF\Model\Model;
 
     class Service extends Model {
+	    const STATUS_ATIVO = 1;
 
         private $id;
         private $nome;
