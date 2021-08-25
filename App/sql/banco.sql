@@ -102,3 +102,18 @@ create table servico (
     comissao float,
     id_status int
 );
+
+insert into status (nome) values ('ATIVADO');
+insert into status (nome) values ('DESATIVADO');
+insert into status (nome) values ('CANCELADO');
+insert into status (nome) values ('EFETIVADO');
+insert into status (nome) values ('ESTORNADO');
+insert into status (nome) values ('PENDENTE');
+insert into status (nome) values ('ENTRADA');
+insert into status (nome) values ('SAIDA');
+
+
+
+
+
+
