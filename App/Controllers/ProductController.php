@@ -12,7 +12,6 @@
         private $indices = array('categorias', 'fornecedores');
 
         public function register(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $this->render('register', 'layout_app');
@@ -22,7 +21,6 @@
         }
 
         public function list(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $categoria = Container::getModel('Categoria');

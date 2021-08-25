@@ -16,7 +16,6 @@
             $collaborator->autenticar();
 
             if($collaborator->__get('id') != '' && $collaborator->__get('nomeCompleto')){
-                session_start();
                 $_SESSION['id'] = $collaborator->__get('id') ;
                 $_SESSION['nome'] = $collaborator->__get('nomeCompleto');
                 header('Location: /home');
@@ -26,7 +25,6 @@
         }
 
         public function sair(){
-            session_start();
             session_destroy();
             header('Location: /');
         }

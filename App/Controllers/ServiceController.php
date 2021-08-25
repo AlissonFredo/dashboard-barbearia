@@ -7,7 +7,6 @@
     class ServiceController extends Action {
 
         public function register(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $this->render('register', 'layout_app');
@@ -17,7 +16,6 @@
         }
 
         public function list(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $service = Container::getModel('Service');

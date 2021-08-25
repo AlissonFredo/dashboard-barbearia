@@ -8,7 +8,6 @@
     class ProviderController extends Action {
 
         public function list(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $provider = Container::getModel('Provider');
@@ -21,7 +20,6 @@
         }
 
         public function register(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $this->render('register', 'layout_app');

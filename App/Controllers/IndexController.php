@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Controllers;
 
 //os recursos do miniframework
@@ -19,7 +17,6 @@ class IndexController extends Action {
 	}
 
 	public function home() {
-		session_start();
 
 		if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
 			$this->render('home', 'layout_app');

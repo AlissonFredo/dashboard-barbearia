@@ -9,7 +9,6 @@
     class CollaboratorController extends Action {
 
         public function cadastrar(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $this->render('register', 'layout_app');
@@ -19,7 +18,6 @@
         }
 
         public function listar(){
-            session_start();
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $collaborator = Container::getModel('Collaborator');
