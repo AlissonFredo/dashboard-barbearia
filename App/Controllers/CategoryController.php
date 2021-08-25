@@ -11,14 +11,26 @@
 	class CategoryController extends Action {
 
 		public function list(){
-			$categoria = Container::getModel('Categoria');
-			$categorias = $categoria->getCategorias();
-			@$this->view->dados = $categorias;
-			$this->render('list', 'layout_app');
+			session_start();
+
+			if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+				$categoria = Container::getModel('Categoria');
+				$categorias = $categoria->getCategorias();
+				@$this->view->dados = $categorias;
+				$this->render('list', 'layout_app');
+			} else {
+				header('Location: /');
+			}
 		}
 
 		public function register(){
-			$this->render('register', 'layout_app');
+            session_start();
+
+			if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+				$this->render('register', 'layout_app');
+			} else {
+				header('Location: /');
+			}
 		}
 
 		public function save(){

@@ -9,14 +9,26 @@
     class CollaboratorController extends Action {
 
         public function cadastrar(){
-            $this->render('register', 'layout_app');
+            session_start();
+
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $this->render('register', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function listar(){
-            $collaborator = Container::getModel('Collaborator');
-            $collaborators = $collaborator->getCollaborators();
-            @$this->view->dados = $collaborators;
-            $this->render('list', 'layout_app');
+            session_start();
+
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $collaborator = Container::getModel('Collaborator');
+                $collaborators = $collaborator->getCollaborators();
+                @$this->view->dados = $collaborators;
+                $this->render('list', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function save(){

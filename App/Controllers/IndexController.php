@@ -19,7 +19,13 @@ class IndexController extends Action {
 	}
 
 	public function home() {
-		$this->render('home', 'layout_app');
+		session_start();
+
+		if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+			$this->render('home', 'layout_app');
+		} else {
+            header('Location: /');
+		}
 	}
 
 }

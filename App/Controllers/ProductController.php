@@ -12,28 +12,39 @@
         private $indices = array('categorias', 'fornecedores');
 
         public function register(){
-            $this->render('register', 'layout_app');
+            session_start();
 
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $this->render('register', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function list(){
-            $categoria = Container::getModel('Categoria');
-			$categorias = $categoria->getCategorias();
+            session_start();
 
-            $provider = Container::getModel('Provider');
-            $providers = $provider->getProviders();
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $categoria = Container::getModel('Categoria');
+                $categorias = $categoria->getCategorias();
 
-            $product = Container::getModel('Product');
-            $products = $product->getProducts();
+                $provider = Container::getModel('Provider');
+                $providers = $provider->getProviders();
 
-            $dados = [
-                'categorias' => $categorias,
-                'fornecedores' => $providers,
-                'produtos' => $products
-            ];
+                $product = Container::getModel('Product');
+                $products = $product->getProducts();
 
-			@$this->view->dados = $dados;
-            $this->render('list', 'layout_app');
+                $dados = [
+                    'categorias' => $categorias,
+                    'fornecedores' => $providers,
+                    'produtos' => $products
+                ];
+
+                @$this->view->dados = $dados;
+                $this->render('list', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function save(){

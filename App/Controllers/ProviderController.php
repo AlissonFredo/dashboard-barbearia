@@ -8,14 +8,26 @@
     class ProviderController extends Action {
 
         public function list(){
-            $provider = Container::getModel('Provider');
-            $providers = $provider->getProviders();
-            @$this->view->dados = $providers;
-            $this->render('list', 'layout_app');
+            session_start();
+
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $provider = Container::getModel('Provider');
+                $providers = $provider->getProviders();
+                @$this->view->dados = $providers;
+                $this->render('list', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function register(){
-            $this->render('register', 'layout_app');
+            session_start();
+
+            if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $this->render('register', 'layout_app');
+            } else {
+                header('Location: /');
+            }
         }
 
         public function save(){
