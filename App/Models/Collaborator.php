@@ -43,4 +43,18 @@
             $stmt->bindValue(1, $this->__get('id'));
             return $stmt->execute();
         }
+
+        public function autenticar(){
+            $query = 'SELECT id, nome_completo FROM colaborador WHERE email = ? AND senha = ?'; 
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('email'));
+            $stmt->bindValue(2, $this->__get('senha'));
+            $stmt->execute();
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if($result['nome_completo'] != '' && $result['id'] != ''){
+                $this->__set('nomeCompleto', $result['nome_completo']);
+                $this->__set('id', $result['id']);
+            }
+        }
     }

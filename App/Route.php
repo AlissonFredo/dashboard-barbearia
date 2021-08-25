@@ -12,10 +12,10 @@
 				'action' => 'login'
 			);
 
-			$routes['logarLogin'] = array(
-				'route' => '/logar',
-				'controller' => 'indexController',
-				'action' => 'logar'
+			$routes['autenticar'] = array(
+				'route' => '/autenticar',
+				'controller' => 'authenticateController',
+				'action' => 'autenticar'
 			);
 
 			$routes['home'] = array(
