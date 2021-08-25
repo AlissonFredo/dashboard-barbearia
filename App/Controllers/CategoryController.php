@@ -10,21 +10,16 @@
 
 	class CategoryController extends Action {
 
-		public function categoria(){
+		public function list(){
 			$categoria = Container::getModel('Categoria');
 			$categorias = $categoria->getCategorias();
 			@$this->view->dados = $categorias;
-			$this->render('categoria', 'layout_app');
+			$this->render('list', 'layout_app');
 		}
 
-		/* TESTE URL 
-		public function listagem(){
-			$categoria = Container::getModel('Categoria');
-			$categorias = $categoria->getCategorias();
-			@$this->view->dados = $categorias;
-			$this->render('categoria', 'layout_app');
+		public function register(){
+			$this->render('register', 'layout_app');
 		}
-		 TESTE URL */
 
 		public function save(){
 			$categoria = Container::getModel('Categoria');
@@ -33,9 +28,9 @@
 			$result = $categoria->save();
 
 			if($result) {
-				header('Location: /categoria?save=1');
+				header('Location: //categoria/cadastrar?save=1');
 			} else {
-				header('Location: /categoria?save=2');
+				header('Location: /categoria/cadastrar?save=2');
 			}
 		}
 
@@ -45,9 +40,9 @@
 			$result = $categoria->deletar();
 
 			if($result == 1) {
-				header('Location: /categoria?delet=1');
+				header('Location: /categoria/listar?delet=1');
 			} else {
-				header('Location: /categoria?delet=2');
+				header('Location: /categoria/listar?delet=2');
 			}	
 		}
 	}

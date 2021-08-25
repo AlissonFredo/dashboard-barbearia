@@ -18,19 +18,17 @@
 				'action' => 'home'
 			);
 
-			$routes['categoria'] = array(
-				'route' => '/categoria',
+			$routes['registerCategoria'] = array(
+				'route' => '/categoria/cadastrar',
 				'controller' => 'categoryController',
-				'action' => 'categoria'
+				'action' => 'register'
 			);
 
-			/* URL TESTE 
-			$routes['ListagemCategoria'] = array(
-				'route' => '/categoria/listagem',
+			$routes['listCategoria'] = array(
+				'route' => '/categoria/listar',
 				'controller' => 'categoryController',
-				'action' => 'listagem'
+				'action' => 'list'
 			);
-			 URL TESTE */
 
 			$routes['saveCategory'] = array(
 				'route' => '/saveCategory',
@@ -44,10 +42,16 @@
 				'action' => 'deletar'
 			);
 
-			$routes['indexFornecedor'] = array(
-				'route' => '/fornecedor',
+			$routes['registerFornecedor'] = array(
+				'route' => '/fornecedor/cadastrar',
 				'controller' => 'providerController',
-				'action' => 'index'
+				'action' => 'register'
+			);
+
+			$routes['listFornecedor'] = array(
+				'route' => '/fornecedor/listar',
+				'controller' => 'providerController',
+				'action' => 'list'
 			);
 
 			$routes['saveFornecedor'] = array(
@@ -62,10 +66,16 @@
 				'action' => 'deletar'
 			);
 
-			$routes['indexServico'] = array(
-				'route' => '/servico',
+			$routes['registerServico'] = array(
+				'route' => '/servico/cadastrar',
 				'controller' => 'serviceController',
-				'action' => 'index'
+				'action' => 'register'
+			);
+
+			$routes['listServico'] = array(
+				'route' => '/servico/listar',
+				'controller' => 'serviceController',
+				'action' => 'list'
 			);
 
 			$routes['saveServico'] = array(
@@ -80,10 +90,16 @@
 				'action' => 'deletar'
 			);
 
-			$routes['indexProduto'] = array(
-				'route' => '/produto',
+			$routes['registerProduto'] = array(
+				'route' => '/produto/cadastrar',
 				'controller' => 'productController',
-				'action' => 'index'
+				'action' => 'register'
+			);
+
+			$routes['listProduto'] = array(
+				'route' => '/produto/listar',
+				'controller' => 'productController',
+				'action' => 'list'
 			);
 
 			$routes['saveProduto'] = array(

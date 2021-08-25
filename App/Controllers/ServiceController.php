@@ -6,11 +6,15 @@
 
     class ServiceController extends Action {
 
-        public function index(){
+        public function register(){
+            $this->render('register', 'layout_app');
+        }
+
+        public function list(){
             $service = Container::getModel('Service');
             $services = $service->getServices();
             @$this->view->dados = $services;
-            $this->render('index', 'layout_app');
+            $this->render('list', 'layout_app');
         }
 
         public function save(){
@@ -22,9 +26,9 @@
             $result = $service->save();
 
             if($result) {
-                header('Location: /servico?save=1');
+                header('Location: /servico/cadastrar?save=1');
             } else {
-                header('Location: /servico?save=2');
+                header('Location: /servico/cadastrar?save=2');
             }
         }
 
@@ -34,9 +38,9 @@
             $result = $service->deletar();
 
             if($result) {
-                header('Location: /servico?deletar=1');
+                header('Location: /servico/listar?deletar=1');
             } else {
-                header('Location: /servico?deletar=2');
+                header('Location: /servico/listar?deletar=2');
             }
 
 

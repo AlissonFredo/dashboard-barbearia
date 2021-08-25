@@ -11,7 +11,12 @@
 
         private $indices = array('categorias', 'fornecedores');
 
-        public function index(){
+        public function register(){
+            $this->render('register', 'layout_app');
+
+        }
+
+        public function list(){
             $categoria = Container::getModel('Categoria');
 			$categorias = $categoria->getCategorias();
 
@@ -28,7 +33,7 @@
             ];
 
 			@$this->view->dados = $dados;
-            $this->render('index', 'layout_app');
+            $this->render('list', 'layout_app');
         }
 
         public function save(){
@@ -47,9 +52,9 @@
             $result = $product->save();
 
             if($result){
-                header('Location: /produto?save=1');
+                header('Location: /produto/cadastrar?save=1');
             } else {
-                header('Location: /produto?save=2');
+                header('Location: /produto/cadastrar?save=2');
             }
         }
 
@@ -59,9 +64,9 @@
             $result = $product->deletar();
 
             if($result){
-                header('Location: /produto?deletar=1');
+                header('Location: /produto/listar?deletar=1');
             } else {
-                header('Location: /produto?deletar=2');
+                header('Location: /produto/listar?deletar=2');
             }
         }
     }

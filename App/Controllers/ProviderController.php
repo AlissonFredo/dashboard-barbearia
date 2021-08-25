@@ -7,11 +7,15 @@
     
     class ProviderController extends Action {
 
-        public function index(){
+        public function list(){
             $provider = Container::getModel('Provider');
             $providers = $provider->getProviders();
             @$this->view->dados = $providers;
-            $this->render('index', 'layout_app');
+            $this->render('list', 'layout_app');
+        }
+
+        public function register(){
+            $this->render('register', 'layout_app');
         }
 
         public function save(){
@@ -21,9 +25,9 @@
             $result = $provider->save();
 
             if($result) {
-                header('Location: /fornecedor?save=1');
+                header('Location: /fornecedor/cadastrar?save=1');
             } else {
-                header('Location: /fornecedor?save=2');
+                header('Location: /fornecedor/cadastrar?save=2');
             }
 
         }
@@ -34,9 +38,9 @@
             $result = $provider->deletar();
 
             if($result){
-                header('Location: /fornecedor?deletar=1');
+                header('Location: /fornecedor/listar?deletar=1');
             }else {
-                header('Location: /fornecedor?deletar=2');
+                header('Location: /fornecedor/listar?deletar=2');
             }
         }
     }
