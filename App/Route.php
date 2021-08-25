@@ -12,6 +12,12 @@
 				'action' => 'login'
 			);
 
+			$routes['logarLogin'] = array(
+				'route' => '/logar',
+				'controller' => 'indexController',
+				'action' => 'logar'
+			);
+
 			$routes['home'] = array(
 				'route' => '/home',
 				'controller' => 'indexController',
@@ -132,7 +138,7 @@
 				'action' => 'save'
 			);
 
-			$routes['saveColaborador'] = array(
+			$routes['deletarColaborador'] = array(
 				'route' => '/colaborador/listar/deletar',
 				'controller' => 'collaboratorController',
 				'action' => 'deletar'

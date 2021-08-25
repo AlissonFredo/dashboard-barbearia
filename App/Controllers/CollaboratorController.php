@@ -26,6 +26,7 @@
             $collaborator->__set('cpf', $_POST['cpf']);
             $collaborator->__set('email', $_POST['email']);
             $collaborator->__set('senha',  md5($_POST['senha']));
+
             $result = $collaborator->save();
 
             if($result){

@@ -19,6 +19,22 @@ class IndexController extends Action {
 		$this->render('login', 'layout_login');
 	}
 
+	public function logar(){
+		$login = Container::getModel('Login');
+		$login->__set('email', $_POST['email']);
+		$login->__set('senha', md5($_POST['senha']));
+		$result = $login->logar();
+
+		if(!empty($result)){
+			//echo 'logar usuario';
+            header('Location: /home');
+
+		} else {
+			//echo 'não logar usuario';
+            header('Location: /');
+		}
+	}
+
 	public function home() {
 		$this->render('home', 'layout_app');
 	}
