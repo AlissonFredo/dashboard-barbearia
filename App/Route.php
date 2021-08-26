@@ -48,6 +48,18 @@
 				'action' => 'deletar'
 			);
 
+			$routes['editarCategory'] = array(
+				'route' => '/categoria/listar/editar',
+				'controller' => 'categoryController',
+				'action' => 'editar'
+			);
+
+			$routes['updateCategory'] = array(
+				'route' => '/categoria/listar/atualizar',
+				'controller' => 'categoryController',
+				'action' => 'atualizar'
+			);
+
 			$routes['registerFornecedor'] = array(
 				'route' => '/fornecedor/cadastrar',
 				'controller' => 'providerController',

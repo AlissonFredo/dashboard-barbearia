@@ -38,6 +38,23 @@ class Categoria extends Model {
 		return $result;
 
 	}
+
+	public function getCategoria(){
+		$query = 'SELECT id, nome FROM categoria WHERE id = ?';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(1, $this->__get('id'));
+		$stmt->execute();
+		$result = $stmt->fetch(\PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	public function atualizar(){
+		$query = 'UPDATE categoria SET nome = ? WHERE id = ?';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(1, $this->__get('nome'));
+		$stmt->bindValue(2, $this->__get('id'));
+		$stmt->execute();
+	}
 }
 
 ?>

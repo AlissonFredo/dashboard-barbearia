@@ -58,4 +58,19 @@
 				header('Location: /categoria/listar?delet='.self::ERRO.'');
 			}	
 		}
+
+		public function editar(){
+			$categoria = Container::getModel('Categoria');
+			$categoria->__set('id', $_GET['id']);
+			$result = $categoria->getCategoria();
+			@$this->view->dados = $result;
+			$this->render('register', 'layout_app');
+		}
+
+		public function atualizar(){
+			$categoria = Container::getModel('Categoria');
+			$categoria->__set('id', $_POST['id']);
+			$categoria->__set('nome', $_POST['nome']);
+			$categoria->atualizar();
+		}
 	}

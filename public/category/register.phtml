@@ -1,32 +1,50 @@
+<?php
+    if(isset($this->view->dados['id']) && $this->view->dados['id'] != ''){
+        $titulo = 'Editar categoria';
+        $url = '/categoria/listar/atualizar';
+        $value = $this->view->dados['nome'];
+        $id = $this->view->dados['id'];
+    } else {
+        $titulo = 'Cadastro categoria';
+        $url = '/saveCategory';
+        $value = '';
+    }
+?>
+
 <?php if(isset($_GET['save']) && $_GET['save'] == 1){ ?>
-<div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-    Categoria cadastrada com sucesso.
-</div>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        Categoria cadastrada com sucesso.
+    </div>
 <?php } ?>
 
 <?php if(isset($_GET['save']) && $_GET['save'] == 2){ ?>
-<div class="alert alert-danger alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-check"></i> Erro!</h5>
-    Erro ao cadastra categoria.
-</div>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Erro!</h5>
+        Erro ao cadastra categoria.
+    </div>
 <?php } ?>
 
 <div class="card card-primary">
     <div class="card-header">
-        <h4>Cadastro categoria</h4>
+        <h4><?= $titulo ?></h4>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/saveCategory" method="post">
+    <form action="<?= $url ?>" method="post">
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
+                <input value="<?= $value ?>" type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
                     required maxlength="50">
             </div>
+            <?php if(isset($this->view->dados['id']) && $this->view->dados['id'] != ''){ ?>
+                <div hidden class="form-group">
+                    <input value="<?= $id ?>" type="text" name="id">
+                </div>
+            <?php } ?>
         </div>
         <!-- /.card-body -->
 
