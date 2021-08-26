@@ -25,7 +25,7 @@ class Categoria extends Model {
 	public function save(){
 		$query = 'INSERT INTO categoria(nome, id_status) VALUES(?,?)';
 		$stmt = $this->db->prepare($query);
-		$stmt->bindValue(1, $this->__get('nome'));
+		$stmt->bindValue(1, strtoupper($this->__get('nome')));
 		$stmt->bindValue(2, $this->__get('id_status'));
 		return $stmt->execute();
 	}
@@ -51,7 +51,7 @@ class Categoria extends Model {
 	public function atualizar(){
 		$query = 'UPDATE categoria SET nome = ? WHERE id = ?';
 		$stmt = $this->db->prepare($query);
-		$stmt->bindValue(1, $this->__get('nome'));
+		$stmt->bindValue(1, strtoupper($this->__get('nome')));
 		$stmt->bindValue(2, $this->__get('id'));
 		return $stmt->execute();
 	}
