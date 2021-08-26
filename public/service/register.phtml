@@ -1,3 +1,20 @@
+<?php
+    if(isset($this->view->dados['id']) && $this->view->dados['id'] != ''){
+        $titulo = 'Editar serviço';
+        $url = '/servico/editar/atualizar';
+        $nome = $this->view->dados['nome'];
+        $valor = $this->view->dados['valor'];
+        $comissao = $this->view->dados['comissao'];
+        $id = $this->view->dados['id'];
+    } else {
+        $titulo = 'Cadastro serviço';
+        $url = '/servico/save';
+        $nome = '';
+        $valor = '';
+        $comissao = '';
+    }
+?>
+
 <?php if(isset($_GET['save']) && $_GET['save'] == 1){ ?>
     <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -16,30 +33,36 @@
 
 <div class="card card-primary">
     <div class="card-header">
-        <h4>Cadastro serviço</h4>
+        <h4><?= $titulo ?></h4>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/servico/save" method="post">
+    <form action="<?= $url ?>" method="post">
         <div class="card-body">
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
+                <input value="<?= $nome ?>" type="text" name="nome" class="form-control" id="exampleInputNome" placeholder="Enter nome"
                     required maxlength="50">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Valor</label>
-                <input type="number" name="valor" class="form-control" id="exampleInputValor" placeholder="Enter valor"
+                <input value="<?= $valor ?>" type="number" name="valor" class="form-control" id="exampleInputValor" placeholder="Enter valor"
                     required min="1" max="1000">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Comissão</label>
-                <input type="number" name="comissao" class="form-control" id="exampleInputComissao"
+                <input value="<?= $comissao ?>" type="number" name="comissao" class="form-control" id="exampleInputComissao"
                     placeholder="Enter comissão" required min="0" max="1000">
             </div>
+
+            <?php if(isset($this->view->dados['id']) && $this->view->dados['id'] != ''){ ?>
+                <div hidden class="form-group">
+                    <input value="<?= $id ?>" type="text" name="id">
+                </div>
+            <?php } ?>
 
         </div>
         <!-- /.card-body -->

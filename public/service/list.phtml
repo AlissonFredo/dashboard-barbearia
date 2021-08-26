@@ -56,7 +56,7 @@
                             <td><?= $service['comissao'] ?></td>
                             <td><?= $service['id_status'] ?></td>
                             <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $service['id'] ?>)"></i></td>
-                            <td><i class="fas fa-edit text-info"></i></td>
+                            <td><i class="fas fa-edit text-info" onclick="editar(<?= $service['id'] ?>)"></i></td>
                         </tr>
                         <?php } ?>
 
@@ -73,5 +73,9 @@
 <script>
     function deletar(id) {
         location.href = '/servico/deletar?id=' + id;
+    }
+
+    function editar(id){
+        location.href = '/servico/editar?id=' + id;
     }
 </script>

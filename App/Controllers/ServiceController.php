@@ -56,7 +56,27 @@
             } else {
                 header('Location: /servico/listar?deletar='.self::ERRO.'');
             }
+        }
 
+        public function editar(){
+            $service = Container::getModel('Service');
+            $service->__set('id', $_GET['id']);
+            @$this->view->dados = $service->getService();
+            $this->render('register', 'layout_app');
+        }
 
+        public function atualizar(){
+            $service = Container::getModel('Service');
+            $service->__set('id', $_POST['id']);
+            $service->__set('nome', $_POST['nome']);
+            $service->__set('valor', $_POST['valor']);
+            $service->__set('comissao', $_POST['comissao']);
+            $result = $service->atualizar();
+
+            if($result){
+				header('Location: /servico/listar?edit='.self::SUCESSO.'');
+            } else {
+				header('Location: /servico/listar?edit='.self::ERRO.'');
+            }
         }
     }

@@ -120,6 +120,18 @@
 				'action' => 'deletar'
 			);
 
+			$routes['editarServico'] = array(
+				'route' => '/servico/editar',
+				'controller' => 'serviceController',
+				'action' => 'editar'
+			);
+
+			$routes['atualizarServico'] = array(
+				'route' => '/servico/editar/atualizar',
+				'controller' => 'serviceController',
+				'action' => 'atualizar'
+			);
+
 			$routes['registerProduto'] = array(
 				'route' => '/produto/cadastrar',
 				'controller' => 'productController',
