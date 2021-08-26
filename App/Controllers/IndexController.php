@@ -5,11 +5,6 @@ namespace App\Controllers;
 use MF\Controller\Action;
 use MF\Model\Container;
 
-
-//os models
-use App\Models\Produto;
-
-
 class IndexController extends Action {
 
 	public function login() {
@@ -24,8 +19,4 @@ class IndexController extends Action {
             header('Location: /');
 		}
 	}
-
 }
-
-
-?>

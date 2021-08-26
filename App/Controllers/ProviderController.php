@@ -3,7 +3,7 @@
 
     use MF\Controller\Action;
     use MF\Model\Container;
-    use MF\Models\Provider;
+    use App\Models\Provider;
     
     class ProviderController extends Action {
 

@@ -3,6 +3,7 @@
 
     use MF\Controller\Action;
     use MF\Model\Container;
+    use App\Models\Service;
 
     class ServiceController extends Action {
 

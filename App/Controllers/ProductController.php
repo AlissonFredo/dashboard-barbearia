@@ -4,8 +4,9 @@
     use MF\Controller\Action;
     use MF\Model\Container;
 
-    use MF\Models\Provider;
+    use App\Models\Provider;
 	use App\Models\Categoria;
+    use App\Models\Product;
 
     class ProductController extends Action {
 

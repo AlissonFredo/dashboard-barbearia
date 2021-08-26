@@ -4,7 +4,7 @@
     use MF\Controller\Action;
     use MF\Model\Container;
 
-    use MF\Models\Collaborator;
+    use App\Models\Collaborator;
 
     class CollaboratorController extends Action {
 

@@ -17,6 +17,11 @@
             $this->$attribute = $value;
         }
 
+        public static function getStatusAtivo()
+        {
+            return self::STATUS_ATIVO;
+        }
+
         public function save(){
             $query = 'INSERT INTO fornecedor (nome, id_status) VALUES (?, ?)';
             $stmt = $this->db->prepare($query);
@@ -26,7 +31,7 @@
         }
 
         public function getProviders(){
-            $query = 'SELECT id, nome FROM fornecedor';
+            $query = 'SELECT id, nome, id_status FROM fornecedor';
             return $this->db->query($query)->fetchAll();
         }
 
