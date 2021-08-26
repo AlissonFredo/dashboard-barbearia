@@ -1,1 +1,113 @@
-teste
+<?php $graficos = true; ?>
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="far fa-chart-bar"></i>
+            Donut Chart
+        </h3>
+
+        <div class="card-tools">
+            <!--
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+            -->
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="donut-chart" style="height: 300px; padding: 0px; position: relative;">
+
+            <canvas 
+                class="flot-base" 
+                width="334" 
+                height="300"
+                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 334px; height: 300px;">
+            </canvas>
+
+            <canvas 
+                class="flot-overlay" 
+                width="334" 
+                height="300" 
+                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 334px; height: 300px;">
+            </canvas>
+
+            <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 70px; left: 224.953px;">
+                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
+                    Series2<br>30%
+                </div>
+            </span>
+
+            <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 210px; left: 202.953px;">
+                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
+                    Series3<br>20%
+                </div>
+            </span>
+            
+            <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 129px; left: 43.9531px;">
+                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
+                    Series4<br>50%
+                </div>
+            </span>
+
+        </div>
+    </div>
+    <!-- /.card-body-->
+</div>
+
+<script>
+    $(function () {
+        /*
+         * DONUT CHART
+         * -----------
+         */
+        var donutData = [
+
+            <?php foreach($this->view->dados as $i => $produto){ ?>
+            {
+                label: '<?= $produto['nome'] ?>',
+                data: <?= $produto['qtd'] ?>,
+                color: '#3c8dbc'
+            },
+            <?php } ?>
+        ]
+        $.plot('#donut-chart', donutData, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    innerRadius: 0.5,
+                    label: {
+                        show: true,
+                        radius: 2 / 3,
+                        formatter: labelFormatter,
+                        threshold: 0.1
+                    }
+
+                }
+            },
+            legend: {
+                show: false
+            }
+        })
+        /*
+         * END DONUT CHART
+         */
+
+    })
+
+    /*
+     * Custom Label formatter
+     * ----------------------
+     */
+    function labelFormatter(label, series) {
+        return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">' +
+            label +
+            '<br>' +
+            Math.round(series.percent) + '%</div>'
+    }
+</script>
