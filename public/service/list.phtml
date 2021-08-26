@@ -33,6 +33,22 @@
                 </div>
             <?php } ?>
 
+            <?php if(isset($_GET['edit']) && $_GET['edit'] == 1){ ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+                    Serviço atualizada com sucesso.
+                </div>
+            <?php } ?>
+
+            <?php if(isset($_GET['edit']) && $_GET['edit'] == 2){ ?>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Erro!</h5>
+                    Erro ao atualizar serviço.
+                </div>
+            <?php } ?>
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
