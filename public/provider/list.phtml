@@ -3,7 +3,6 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"></h3>
-
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -52,7 +51,7 @@
                                 <td><?= $provider['nome'] ?></td>
                                 <td><?= $provider['id_status'] ?></td>
                                 <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $provider['id'] ?>)"></i></td>
-                                <td><i class="fas fa-edit text-info"></i></td>
+                                <td><i class="fas fa-edit text-info" onclick="editar(<?= $provider['id'] ?>)"></i></td>
                             </tr>
                         <?php } ?>
 
@@ -60,7 +59,6 @@
                 </table>
             </div>
             <!-- /.card-body -->
-
         </div>
         <!-- /.card -->
     </div>
@@ -69,5 +67,9 @@
 <script>
     function deletar(id) {
         location.href = '/fornecedor/deletar?id=' + id;
+    }
+
+    function editar(id){
+        location.href = '/fornecedor/editar?id=' + id;
     }
 </script>

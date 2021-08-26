@@ -1,7 +1,7 @@
 <?php
     if(isset($this->view->dados['id']) && $this->view->dados['id'] != ''){
         $titulo = 'Editar categoria';
-        $url = '/categoria/listar/atualizar';
+        $url = '/categoria/editar/atualizar';
         $value = $this->view->dados['nome'];
         $id = $this->view->dados['id'];
     } else {

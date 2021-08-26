@@ -41,4 +41,20 @@
             $stmt->bindValue(1, $this->__get('id'));
             return $stmt->execute();
         }
+
+        public function getProvider(){
+            $query = 'SELECT id, nome FROM fornecedor WHERE id = ?';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('id'));
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        public function atualizar(){
+            $query = 'UPDATE fornecedor SET nome = ? WHERE id = ?';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, strtoupper($this->__get('nome')));
+            $stmt->bindValue(2, $this->__get('id'));
+            return $stmt->execute();
+        }
     }

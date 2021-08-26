@@ -56,4 +56,25 @@
                 header('Location: /fornecedor/listar?deletar='.self::ERRO.'');
             }
         }
+
+        public function editar(){
+            $provider = Container::getModel('Provider');
+            $provider->__set('id', $_GET['id']);
+            $result = $provider->getProvider();
+            @$this->view->dados = $result;
+			$this->render('register', 'layout_app');
+        }
+
+        public function atualizar(){
+            $provider = Container::getModel('Provider');
+            $provider->__set('id', $_POST['id']);
+            $provider->__set('nome', $_POST['nome']);
+            $result = $provider->atualizar();
+
+            if($result){
+				header('Location: /fornecedor/listar?edit='.self::SUCESSO.'');
+            } else {
+				header('Location: /fornecedor/listar?edit='.self::ERRO.'');
+            }
+        }
     }

@@ -49,13 +49,13 @@
 			);
 
 			$routes['editarCategory'] = array(
-				'route' => '/categoria/listar/editar',
+				'route' => '/categoria/editar',
 				'controller' => 'categoryController',
 				'action' => 'editar'
 			);
 
 			$routes['updateCategory'] = array(
-				'route' => '/categoria/listar/atualizar',
+				'route' => '/categoria/editar/atualizar',
 				'controller' => 'categoryController',
 				'action' => 'atualizar'
 			);
@@ -76,6 +76,18 @@
 				'route' => '/fornecedor/save',
 				'controller' => 'providerController',
 				'action' => 'save'
+			);
+
+			$routes['editarFornecedor'] = array(
+				'route' => '/fornecedor/editar',
+				'controller' => 'providerController',
+				'action' => 'editar'
+			);
+
+			$routes['atualizarFornecedor'] = array(
+				'route' => '/fornecedor/editar/atualizar',
+				'controller' => 'providerController',
+				'action' => 'atualizar'
 			);
 
 			$routes['deleteFornecedor'] = array(
