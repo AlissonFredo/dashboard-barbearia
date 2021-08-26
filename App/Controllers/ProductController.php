@@ -78,4 +78,8 @@
                 header('Location: /produto/listar?deletar='.self::ERRO.'');
             }
         }
+
+        public function editar(){
+				header('Location: /produto/listar?desenvolvimento=1');
+        }
     }

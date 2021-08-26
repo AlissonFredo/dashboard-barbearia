@@ -3,11 +3,9 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"></h3>
-
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
@@ -33,6 +31,14 @@
                 </div>
             <?php } ?>
 
+            <?php if(isset($_GET['desenvolvimento']) && $_GET['desenvolvimento'] == 1){ ?>
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-check"></i> Aviso!</h5>
+                    Editar produto esta em desenvolvimento.
+                </div>
+            <?php } ?>
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -53,33 +59,26 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <?php foreach($this->view->dados as $i => $dado){ ?>
-                            <?php if($i == 'produtos'){ ?>
-                                <?php foreach($dado as $j => $produto){ ?>
-                                    <tr>
-                                        <td><?= $produto['id'] ?></td>
-                                        <td><?= $produto['nome'] ?></td>
-                                        <td><?= $produto['valor_compra'] ?></td>
-                                        <td><?= $produto['valor_venda'] ?></td>
-                                        <td><?= $produto['comissao'] ?></td>
-                                        <td><?= $produto['qtd'] ?></td>
-                                        <td><?= $produto['id_fornecedor'] ?></td>
-                                        <td><?= $produto['id_categoria'] ?></td>
-                                        <td><?= $produto['data_validade'] ?></td>
-                                        <td><?= $produto['id_status'] ?></td>
-                                        <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $produto['id'] ?>)"></i></td>
-                                        <td><i class="fas fa-edit text-info"></i></td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } ?>
+                        <?php foreach($this->view->dados as $i => $produto){ ?>
+                            <tr>
+                                <td><?= $produto['id'] ?></td>
+                                <td><?= $produto['nome'] ?></td>
+                                <td><?= $produto['valor_compra'] ?></td>
+                                <td><?= $produto['valor_venda'] ?></td>
+                                <td><?= $produto['comissao'] ?></td>
+                                <td><?= $produto['qtd'] ?></td>
+                                <td><?= $produto['id_fornecedor'] ?></td>
+                                <td><?= $produto['id_categoria'] ?></td>
+                                <td><?= $produto['data_validade'] ?></td>
+                                <td><?= $produto['id_status'] ?></td>
+                                <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $produto['id'] ?>)"></i></td>
+                                <td><i class="fas fa-edit text-info" onclick="editar(<?= $produto['id'] ?>)"></i></td>
+                            </tr>
                         <?php } ?>
-
                     </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
-
         </div>
         <!-- /.card -->
     </div>
@@ -88,5 +87,9 @@
 <script>
     function deletar(id){
         location.href = '/produto/deletar?id=' + id;
+    }
+
+    function editar(id){
+        location.href = '/produto/editar?id=' + id;
     }
 </script>

@@ -156,6 +156,12 @@
 				'action' => 'deletar'
 			);
 
+			$routes['editProduto'] = array(
+				'route' => '/produto/editar',
+				'controller' => 'productController',
+				'action' => 'editar'
+			);
+
 			$routes['cadastrarColaborador'] = array(
 				'route' => '/colaborador/cadastrar',
 				'controller' => 'collaboratorController',
@@ -178,6 +184,12 @@
 				'route' => '/colaborador/listar/deletar',
 				'controller' => 'collaboratorController',
 				'action' => 'deletar'
+			);
+
+			$routes['editarColaborador'] = array(
+				'route' => '/colaborador/editar',
+				'controller' => 'collaboratorController',
+				'action' => 'editar'
 			);
 
 			$routes['sair'] = array(

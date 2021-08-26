@@ -60,4 +60,8 @@
                 header('Location: /colaborador/listar?deletar='.self::ERRO.'');
             }
         }
+
+        public function editar(){
+			header('Location: /colaborador/listar?desenvolvimento=1');
+        }
     }
