@@ -53,7 +53,7 @@ class Categoria extends Model {
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(1, $this->__get('nome'));
 		$stmt->bindValue(2, $this->__get('id'));
-		$stmt->execute();
+		return $stmt->execute();
 	}
 }
 

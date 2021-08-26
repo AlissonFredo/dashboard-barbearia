@@ -71,6 +71,12 @@
 			$categoria = Container::getModel('Categoria');
 			$categoria->__set('id', $_POST['id']);
 			$categoria->__set('nome', $_POST['nome']);
-			$categoria->atualizar();
+			$result = $categoria->atualizar();
+
+			if($result){
+				header('Location: /categoria/listar?edit='.self::SUCESSO.'');
+			} else {
+				header('Location: /categoria/listar?edit='.self::ERRO.'');
+			}
 		}
 	}
