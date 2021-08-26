@@ -57,6 +57,7 @@
                 <label for="exampleInputEmail1">Fornecedor</label>
 
                 <select class="form-control" name="fornecedor" id="exampleSelectFornecedor">
+                    <option value=""></option>
                     <?php foreach($this->view->dados as $i => $dado){ ?>
                         <?php if($i == 'fornecedores'){ ?>
                             <?php foreach($dado as $j => $fornecedor){ ?>
@@ -71,6 +72,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Categoria</label>
                 <select class="form-control" name="categoria" id="exampleSelectCategoria">
+                    <option value=""></option>
                     <?php foreach($this->view->dados as $i => $dado){ ?>
                         <?php if($i == 'categorias'){ ?>
                             <?php foreach($dado as $j => $categoria){ ?>

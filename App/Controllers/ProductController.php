@@ -16,6 +16,18 @@
         public function register(){
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
+                $categoria = Container::getModel('Categoria');
+                $categorias = $categoria->getCategorias();
+
+                $provider = Container::getModel('Provider');
+                $providers = $provider->getProviders();
+
+                $dados = [
+                    'categorias' => $categorias,
+                    'fornecedores' => $providers,
+                ];
+
+                @$this->view->dados = $dados;
                 $this->render('register', 'layout_app');
             } else {
                 header('Location: /');
@@ -25,22 +37,8 @@
         public function list(){
 
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
-                $categoria = Container::getModel('Categoria');
-                $categorias = $categoria->getCategorias();
-
-                $provider = Container::getModel('Provider');
-                $providers = $provider->getProviders();
-
                 $product = Container::getModel('Product');
-                $products = $product->getProducts();
-
-                $dados = [
-                    'categorias' => $categorias,
-                    'fornecedores' => $providers,
-                    'produtos' => $products
-                ];
-
-                @$this->view->dados = $dados;
+                @$this->view->dados = $product->getProducts();
                 $this->render('list', 'layout_app');
             } else {
                 header('Location: /');
