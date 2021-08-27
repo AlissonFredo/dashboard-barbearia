@@ -54,6 +54,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
+                            <th>Status</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -63,6 +64,7 @@
                             <tr>
                                 <td><?= $categoria['id'] ?></td>
                                 <td><?= $categoria['nome'] ?></td>
+                                <td><?= $categoria['id_status'] ?></td>
                                 <td><i class="fas fa-trash text-danger" onclick="deletar(<?= $categoria['id'] ?>)"></i></td>
                                 <td><i class="fas fa-edit text-info"
                                         onclick="editar(<?= $categoria['id']?>)"></i></td>

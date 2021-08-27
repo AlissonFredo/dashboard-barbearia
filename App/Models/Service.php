@@ -30,7 +30,9 @@
         }
 
         public function getServices(){
-            $query = 'SELECT id, nome, valor, comissao, id_status FROM servico';
+            $query = 'SELECT s.id, s.nome, s.valor, s.comissao, status.nome AS id_status
+                FROM servico AS s
+                INNER JOIN status ON s.id_status = status.id';
             return $this->db->query($query)->fetchAll();
         }
 

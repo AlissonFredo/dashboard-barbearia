@@ -18,7 +18,9 @@ class Categoria extends Model {
 	}
 
 	public function getCategorias() {
-		$query = "SELECT id, nome FROM categoria";
+		$query = "SELECT c.id, c.nome, status.nome AS id_status
+			FROM categoria AS c
+			INNER JOIN status ON c.id_status = status.id";
 		return $this->db->query($query)->fetchAll();
 	}
 

@@ -31,7 +31,9 @@
         }
 
         public function getProviders(){
-            $query = 'SELECT id, nome, id_status FROM fornecedor';
+            $query = 'SELECT f.id, f.nome, status.nome AS id_status
+                FROM fornecedor AS f
+                INNER JOIN status ON f.id_status = status.id';
             return $this->db->query($query)->fetchAll();
         }
 
