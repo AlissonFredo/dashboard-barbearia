@@ -42,7 +42,22 @@
         }
 
         public function getProducts(){
-            $query = 'SELECT * FROM produto';
+            $query = 'SELECT    
+                    p.id, 
+                    p.nome, 
+                    p.qtd, 
+                    p.valor_compra, 
+                    p.valor_venda, 
+                    p.data_validade, 
+                    p.comissao, 
+                    f.nome AS id_fornecedor, 
+                    c.nome AS id_categoria, 
+                    s.nome AS id_status
+                FROM produto AS p
+                INNER JOIN status as s ON p.id_status = s.id
+                INNER JOIN fornecedor AS f ON p.id_fornecedor = f.id
+                INNER JOIN categoria AS c ON p.id_categoria = c.id
+                ORDER BY p.id ASC';
             return $this->db->query($query)->fetchAll();
         }
 

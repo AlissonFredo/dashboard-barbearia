@@ -11,13 +11,12 @@
         const SUCESSO = 1;
         const ERRO = 2;
 
-        public function cadastrar(){
-
+        public function cadastrar(){            
             if($_SESSION['nome'] != '' && $_SESSION['id'] != ''){
                 $this->render('register', 'layout_app');
             } else {
                 header('Location: /');
-            }
+            }  
         }
 
         public function listar(){
