@@ -1,113 +1,109 @@
-<?php $graficos = true; ?>
-
-<div class="card card-primary card-outline">
+<div class="card card-danger">
     <div class="card-header">
-        <h3 class="card-title">
-            <i class="far fa-chart-bar"></i>
-            Donut Chart
-        </h3>
-
-        <div class="card-tools">
-            <!--
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
-            -->
-        </div>
+        <h3 class="card-title">Produtos por categoria</h3>
     </div>
     <div class="card-body">
-        <div id="donut-chart" style="height: 300px; padding: 0px; position: relative;">
-
-            <canvas 
-                class="flot-base" 
-                width="334" 
-                height="300"
-                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 334px; height: 300px;">
-            </canvas>
-
-            <canvas 
-                class="flot-overlay" 
-                width="334" 
-                height="300" 
-                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 334px; height: 300px;">
-            </canvas>
-
-            <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 70px; left: 224.953px;">
-                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
-                    Series2<br>30%
-                </div>
-            </span>
-
-            <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 210px; left: 202.953px;">
-                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
-                    Series3<br>20%
-                </div>
-            </span>
-            
-            <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 129px; left: 43.9531px;">
-                <div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">
-                    Series4<br>50%
-                </div>
-            </span>
-
+        <div class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand">
+                <div class=""></div>
+            </div>
+            <div class="chartjs-size-monitor-shrink">
+                <div class=""></div>
+            </div>
         </div>
+        <canvas id="pieChart"
+            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 334px;"
+            width="334" height="250" class="chartjs-render-monitor"></canvas>
     </div>
-    <!-- /.card-body-->
+    <!-- /.card-body -->
+</div>
+
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">Produtos por fornecedor</h3>
+    </div>
+    <div class="card-body">
+        <div class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand">
+                <div class=""></div>
+            </div>
+            <div class="chartjs-size-monitor-shrink">
+                <div class=""></div>
+            </div>
+        </div>
+        <canvas id="pieChart2"
+            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 334px;"
+            width="334" height="250" class="chartjs-render-monitor"></canvas>
+    </div>
+    <!-- /.card-body -->
 </div>
 
 <script>
     $(function () {
-        /*
-         * DONUT CHART
-         * -----------
-         */
-        var donutData = [
 
-            <?php foreach($this->view->dados as $i => $produto){ ?>
-            {
-                label: '<?= $produto['nome'] ?>',
-                data: <?= $produto['qtd'] ?>,
-                color: '#3c8dbc'
-            },
-            <?php } ?>
-        ]
-        $.plot('#donut-chart', donutData, {
-            series: {
-                pie: {
-                    show: true,
-                    radius: 1,
-                    innerRadius: 0.5,
-                    label: {
-                        show: true,
-                        radius: 2 / 3,
-                        formatter: labelFormatter,
-                        threshold: 0.1
-                    }
+        var donutData = {
+            labels: [
+                <?php foreach($this->view->productsByCategory as $key => $productsByCategory){ ?>
+                    '<?= $productsByCategory['nome'] ?>',
+                <?php } ?>
+            ],
+            datasets: [{
+                data: [
+                    <?php foreach($this->view->productsByCategory as $key => $productsByCategory){ ?>
+                        '<?= $productsByCategory['total_produtos'] ?>',
+                    <?php } ?>
+                ],
+                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', /*'#3c8dbc', '#d2d6de'*/],
+            }]
+        }
 
-                }
-            },
-            legend: {
-                show: false
-            }
+        var donutData2 = {
+            labels: [
+                <?php foreach($this->view->productsByProvider as $key => $productsByProvider){ ?>
+                    '<?= $productsByProvider['nome'] ?>',
+                <?php } ?>
+            ],
+            datasets: [{
+                data: [
+                    <?php foreach($this->view->productsByProvider as $key => $productsByProvider){ ?>
+                        '<?= $productsByProvider['total_produtos'] ?>',
+                    <?php } ?>
+                ],
+                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ff66d9', '#88ff4d'],
+            }]
+        }
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData = donutData;
+        var pieOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+
+        var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+        var pieData2 = donutData2;
+        var pieOptions2 = {
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: pieData,
+            options: pieOptions
         })
-        /*
-         * END DONUT CHART
-         */
+
+        new Chart(pieChartCanvas2, {
+            type: 'pie',
+            data: pieData2,
+            options: pieOptions2
+        })
 
     })
-
-    /*
-     * Custom Label formatter
-     * ----------------------
-     */
-    function labelFormatter(label, series) {
-        return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">' +
-            label +
-            '<br>' +
-            Math.round(series.percent) + '%</div>'
-    }
 </script>

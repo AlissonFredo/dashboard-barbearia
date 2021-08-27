@@ -52,4 +52,20 @@
             $stmt->bindValue(1, $this->__get('id'));
             return $stmt->execute();
         }
+
+        public function getProductsByCategory(){
+            $query = 'SELECT c.nome, sum(p.qtd) AS total_produtos 
+                FROM produto AS p 
+                INNER JOIN categoria AS c ON p.id_categoria = c.id 
+                GROUP BY c.nome;';
+            return $this->db->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
+        public function getProductsByProvider(){
+            $query = 'SELECT f.nome, sum(p.qtd) AS total_produtos 
+                FROM produto AS p
+                INNER JOIN fornecedor AS f ON p.id_fornecedor = f.id
+                GROUP BY f.nome;';
+            return $this->db->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+        }
     }
